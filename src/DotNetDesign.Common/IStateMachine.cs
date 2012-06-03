@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DotNetDesign.Common
+namespace DryDev.Common
 {
     /// <summary>
     /// Defines functionality for a state machine

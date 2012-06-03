@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetDesign.Common", "DotNetDesign.Common\DotNetDesign.Common.csproj", "{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DryDev.Common", "DryDev.Common\DryDev.Common.csproj", "{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{33EABCF3-345B-49EF-9FEF-FFA6AF8F3732}"
 	ProjectSection(SolutionItems) = preProject

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Common.Logging;
 
-namespace DotNetDesign.Common
+namespace DryDev.Common
 {
     /// <summary>
     /// Common extension methods

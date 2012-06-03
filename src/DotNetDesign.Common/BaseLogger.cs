@@ -1,7 +1,7 @@
 ﻿using System;
 using Common.Logging;
 
-namespace DotNetDesign.Common
+namespace DryDev.Common
 {
     /// <summary>
     /// Base Logger Class
