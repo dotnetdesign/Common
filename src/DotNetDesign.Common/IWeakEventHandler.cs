@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Defines methods of a weak event handler.

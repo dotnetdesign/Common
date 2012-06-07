@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Implementation of state machine.

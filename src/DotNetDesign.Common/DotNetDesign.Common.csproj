@@ -8,8 +8,8 @@
     <ProjectGuid>{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DryDev.Common</RootNamespace>
-    <AssemblyName>DryDev.Common</AssemblyName>
+    <RootNamespace>DotNetDesign.Common</RootNamespace>
+    <AssemblyName>DotNetDesign.Common</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
@@ -61,7 +61,7 @@
     <Compile Include="WeakEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DryDev.Common.nuspec" />
+    <None Include="DotNetDesign.Common.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

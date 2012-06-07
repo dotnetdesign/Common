@@ -1,7 +1,7 @@
 ﻿using System;
 using Common.Logging;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// State Change Event Args
@@ -40,7 +40,7 @@ namespace DryDev.Common
         /// <summary>
         /// Toes the event args.
         /// </summary>
-        /// <param name="stateChangeEventArgs">The <see cref="DryDev.Substrate.StateChangeEventArgs&lt;TState&gt;"/> instance containing the event data.</param>
+        /// <param name="stateChangeEventArgs">The <see cref="DotNetDesign.Substrate.StateChangeEventArgs&lt;TState&gt;"/> instance containing the event data.</param>
         /// <returns></returns>
         public static EventArgs ToEventArgs(StateChangeEventArgs<TState> stateChangeEventArgs)
         {

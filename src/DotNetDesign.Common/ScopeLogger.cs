@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using Common.Logging;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Disposable object that will write a trace message when created and when disposed.

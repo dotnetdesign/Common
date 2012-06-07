@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using Common.Logging;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Static methods to help return the string representation of a type's member.

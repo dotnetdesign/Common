@@ -1,7 +1,7 @@
 ﻿using System;
 using Common.Logging;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Event Handler Extension Methods

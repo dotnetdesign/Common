@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Defines the method signature of a method to handle the unregister callback.

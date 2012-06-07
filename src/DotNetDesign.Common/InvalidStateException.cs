@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Common.Logging;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Invalid state exception

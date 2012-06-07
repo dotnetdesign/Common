@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DryDev.Common
+namespace DotNetDesign.Common
 {
     /// <summary>
     /// Represents a weak referenced event handler.
@@ -73,7 +73,7 @@ namespace DryDev.Common
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="DryDev.Substrate.WeakEventHandler&lt;TTarget,TEventArgs&gt;"/> to <see cref="System.EventHandler&lt;TEventArgs&gt;"/>.
+        /// Performs an implicit conversion from <see cref="DotNetDesign.Substrate.WeakEventHandler&lt;TTarget,TEventArgs&gt;"/> to <see cref="System.EventHandler&lt;TEventArgs&gt;"/>.
         /// </summary>
         /// <param name="weh">The weh.</param>
         /// <returns>
