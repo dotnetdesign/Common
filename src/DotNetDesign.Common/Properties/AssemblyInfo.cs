@@ -11,5 +11,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyProduct("DotNetDesign.Common")]
 [assembly: AssemblyCopyright("Copyright © DotNetDesign 2012")]
 [assembly: Guid("5b5d09bc-18ff-445a-95a7-5409bb5af99a")]
-[assembly: AssemblyVersion("0.5.1.0")]
-[assembly: AssemblyFileVersion("0.5.1.0")]
+[assembly: AssemblyVersion("0.5.2.0")]
+[assembly: AssemblyFileVersion("0.5.2.0")]
