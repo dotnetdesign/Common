@@ -9,7 +9,6 @@ namespace DotNetDesign.Common
     /// </summary>
     /// <typeparam name="TState">The type of the state.</typeparam>
     public class StateMachine<TState> :
-        BaseLogger<StateMachine<TState>>,
         IStateMachine<TState>
     {
         private readonly IDictionary<TState, IEnumerable<TState>> _validStateChangeMap;
@@ -32,7 +31,7 @@ namespace DotNetDesign.Common
         /// <param name="initialState">The initial state.</param>
         public StateMachine(IDictionary<TState, IEnumerable<TState>> validStateChangeMap, TState initialState)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 _validStateChangeMap = validStateChangeMap;
                 _currentState = initialState;
@@ -46,7 +45,7 @@ namespace DotNetDesign.Common
         /// <param name="newState">The new state.</param>
         protected virtual void OnStateChanging(TState originalState, TState newState)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 StateChanging.Invoke(this, new StateChangeEventArgs<TState>(originalState, newState));
             }
@@ -64,7 +63,7 @@ namespace DotNetDesign.Common
         /// <param name="newState">The new state.</param>
         protected virtual void OnStateChanged(TState originalState, TState newState)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 StateChanged.Invoke(this, new StateChangeEventArgs<TState>(originalState, newState));
             }
@@ -85,7 +84,7 @@ namespace DotNetDesign.Common
         {
             get
             {
-                using (Logger.Scope())
+                using (Logger.Assembly.Scope())
                 {
                     return _currentState;
                 }
@@ -98,7 +97,7 @@ namespace DotNetDesign.Common
         /// <param name="targetState">State of the target.</param>
         public void ChangeState(TState targetState)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 if (!GetValidNextStates().Contains(targetState))
                 {
@@ -118,7 +117,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public IEnumerable<TState> GetValidNextStates()
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return _validStateChangeMap[CurrentState];
             }

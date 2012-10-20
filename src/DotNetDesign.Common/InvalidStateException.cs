@@ -14,8 +14,6 @@ namespace DotNetDesign.Common
         private const string ERROR_MESSAGE_FORMAT =
             "Change from state {0} to state {1} is not allowed. Allowed states, [{2}].";
 
-        protected readonly ILog Logger = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         /// <summary>
         /// Initializes a new instance of the <see cref="InvalidStateException&lt;TState&gt;"/> class.
         /// </summary>
@@ -25,7 +23,7 @@ namespace DotNetDesign.Common
         public InvalidStateException(TState currentState, TState targetState, IEnumerable<TState> allowedStates)
             : base(string.Format(ERROR_MESSAGE_FORMAT, currentState, targetState, string.Join(", ", allowedStates)))
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 CurrentState = currentState;
                 TargetState = targetState;

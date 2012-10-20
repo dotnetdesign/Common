@@ -8,8 +8,6 @@ namespace DotNetDesign.Common
     /// </summary>
     public class StateChangeEventArgs<TState> : EventArgs
     {
-        protected readonly ILog Logger = LogManager.GetLogger(typeof(StateChangeEventArgs<TState>));
-
         /// <summary>
         /// Initializes a new instance of the <see cref="StateChangeEventArgs&lt;TState&gt;"/> class.
         /// </summary>
@@ -17,7 +15,7 @@ namespace DotNetDesign.Common
         /// <param name="newState">The new state.</param>
         public StateChangeEventArgs(TState originalState, TState newState)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 OriginalState = originalState;
                 NewState = newState;
@@ -44,7 +42,10 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static EventArgs ToEventArgs(StateChangeEventArgs<TState> stateChangeEventArgs)
         {
-            return stateChangeEventArgs;
+            using (Logger.Assembly.Scope())
+            {
+                return stateChangeEventArgs;
+            }
         }
     }
 }

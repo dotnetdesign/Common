@@ -13,8 +13,6 @@ namespace DotNetDesign.Common
     /// </summary>
     public static class ObjectCopier
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(ObjectCopier));
-
         /// <summary>
         /// Perform a deep Copy of the object.
         /// </summary>
@@ -23,9 +21,9 @@ namespace DotNetDesign.Common
         /// <returns>The copied object.</returns>
         public static T Clone<T>(T source)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
-                Logger.TraceFormat("Cloning {0}.", source);
+                Logger.Assembly.Trace(m => m("Cloning {0}.", source));
                 if (!typeof(T).IsSerializable)
                 {
                     throw new ArgumentException("The type must be serializable.", "source");

@@ -8,8 +8,6 @@ namespace DotNetDesign.Common
     /// </summary>
     public static class EventHandlerExtensions
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(EventHandlerExtensions));
-
         /// <summary>
         /// Makes the weak.
         /// </summary>
@@ -20,26 +18,30 @@ namespace DotNetDesign.Common
         public static EventHandler<TEventArgs> MakeWeak<TEventArgs>(this EventHandler<TEventArgs> eventHandler, UnregisterCallback<TEventArgs> unregister)
           where TEventArgs : EventArgs
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 if (eventHandler == null)
+                {
                     throw new ArgumentNullException("eventHandler");
+                }
 
                 if (eventHandler.Method.IsStatic || eventHandler.Target == null)
+                {
                     throw new ArgumentException("Only instance methods are supported.", "eventHandler");
+                }
 
-                var wehType = typeof(WeakEventHandler<,>).MakeGenericType(eventHandler.Method.DeclaringType, typeof(TEventArgs));
+                var weakEventType = typeof(WeakEventHandler<,>).MakeGenericType(eventHandler.Method.DeclaringType, typeof(TEventArgs));
 
-                var wehConstructor = wehType.GetConstructor(
+                var weakEventHandlerConstructor = weakEventType.GetConstructor(
                     new[]
                     {
                         typeof (EventHandler<TEventArgs>),
                         typeof (UnregisterCallback<TEventArgs>)
                     });
 
-                var weh = (IWeakEventHandler<TEventArgs>)wehConstructor.Invoke(new object[] { eventHandler, unregister });
+                var weakEventHandler = (IWeakEventHandler<TEventArgs>)weakEventHandlerConstructor.Invoke(new object[] { eventHandler, unregister });
 
-                return weh.Handler;
+                return weakEventHandler.Handler;
             }
         }
     }

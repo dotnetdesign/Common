@@ -45,12 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseLogger.cs" />
     <Compile Include="EventHandlerExtensions.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="InvalidStateException.cs" />
     <Compile Include="IStateMachine.cs" />
     <Compile Include="IWeakEventHandler.cs" />
+    <Compile Include="Logger.cs" />
     <Compile Include="MemberName.cs" />
     <Compile Include="ObjectCopier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

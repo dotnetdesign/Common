@@ -18,7 +18,10 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static IEnumerable<T> RemoveNulls<T>(this IEnumerable<T> values) where T : class
         {
-            return values.Where(x => x != null);
+            using (Logger.Assembly.Scope())
+            {
+                return values.Where(x => x != null);
+            }
         }
 
         /// <summary>

@@ -9,8 +9,6 @@ namespace DotNetDesign.Common
     /// </summary>
     public static class MemberName
     {
-        private static readonly ILog Logger = LogManager.GetLogger(typeof(MemberName));
-
         /// <summary>
         /// Get's the property name
         /// </summary>
@@ -20,7 +18,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For<T>(T instance, Expression<Action<T>> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -34,7 +32,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For<T>(Expression<Action<T>> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -47,7 +45,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For(Expression<Action> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -63,7 +61,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For<T, TResult>(T instance, Expression<Func<T, TResult>> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -78,7 +76,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For<T, TResult>(Expression<Func<T, TResult>> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -92,7 +90,7 @@ namespace DotNetDesign.Common
         /// <returns></returns>
         public static string For<TResult>(Expression<Func<TResult>> expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 return FindMemberName(expression.Body);
             }
@@ -100,7 +98,7 @@ namespace DotNetDesign.Common
 
         static string FindMemberName(Expression expression)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 if (expression is MethodCallExpression)
                 {
@@ -113,7 +111,7 @@ namespace DotNetDesign.Common
                 }
 
                 var invalidExpression = new ArgumentException("Invalid expression [" + expression + "]");
-                Logger.Warn(invalidExpression.Message);
+                Logger.Assembly.Warn(m => m(invalidExpression.Message), invalidExpression);
 
                 throw invalidExpression;
             }

@@ -8,7 +8,6 @@ namespace DotNetDesign.Common
     /// <typeparam name="TTarget">The type of the target.</typeparam>
     /// <typeparam name="TEventArgs">The type of the event args.</typeparam>
     public class WeakEventHandler<TTarget, TEventArgs> :
-        BaseLogger<WeakEventHandler<TTarget, TEventArgs>>,
         IWeakEventHandler<TEventArgs>
         where TTarget : class
         where TEventArgs : EventArgs
@@ -27,7 +26,7 @@ namespace DotNetDesign.Common
         /// <param name="unregister">The unregister.</param>
         public WeakEventHandler(EventHandler<TEventArgs> eventHandler, UnregisterCallback<TEventArgs> unregister)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 _targetRef = new WeakReference(eventHandler.Target);
                 _openHandler =
@@ -44,12 +43,14 @@ namespace DotNetDesign.Common
         /// <param name="e">The <see cref="TEventArgs"/> instance containing the event data.</param>
         public void Invoke(object sender, TEventArgs e)
         {
-            using (Logger.Scope())
+            using (Logger.Assembly.Scope())
             {
                 var target = (TTarget)_targetRef.Target;
 
                 if (target != null)
+                {
                     _openHandler.Invoke(target, sender, e);
+                }
                 else if (_unregister != null)
                 {
                     _unregister(_handler);
@@ -65,7 +66,7 @@ namespace DotNetDesign.Common
         {
             get
             {
-                using (Logger.Scope())
+                using (Logger.Assembly.Scope())
                 {
                     return _handler;
                 }
@@ -75,13 +76,16 @@ namespace DotNetDesign.Common
         /// <summary>
         /// Performs an implicit conversion from <see cref="DotNetDesign.Substrate.WeakEventHandler&lt;TTarget,TEventArgs&gt;"/> to <see cref="System.EventHandler&lt;TEventArgs&gt;"/>.
         /// </summary>
-        /// <param name="weh">The weh.</param>
+        /// <param name="weakEventHandler">The weak event handler.</param>
         /// <returns>
         /// The result of the conversion.
         /// </returns>
-        public static implicit operator EventHandler<TEventArgs>(WeakEventHandler<TTarget, TEventArgs> weh)
+        public static implicit operator EventHandler<TEventArgs>(WeakEventHandler<TTarget, TEventArgs> weakEventHandler)
         {
-            return weh._handler;
+            using (Logger.Assembly.Scope())
+            {
+                return weakEventHandler._handler;
+            }
         }
     }
 }
