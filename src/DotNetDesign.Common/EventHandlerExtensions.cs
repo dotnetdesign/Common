@@ -20,10 +20,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
-                if (eventHandler == null)
-                {
-                    throw new ArgumentNullException("eventHandler");
-                }
+                Guard.ArgumentNotNull(eventHandler, "eventHandler");
 
                 if (eventHandler.Method.IsStatic || eventHandler.Target == null)
                 {

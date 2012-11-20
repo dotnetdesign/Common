@@ -20,6 +20,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(values, "values");
                 return values.Where(x => x != null);
             }
         }

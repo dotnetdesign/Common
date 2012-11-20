@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}</ProjectGuid>
+    <ProjectGuid>{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DotNetDesign.Common</RootNamespace>
-    <AssemblyName>DotNetDesign.Common</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>DotNetDesign.Common.Tests</RootNamespace>
+    <AssemblyName>DotNetDesign.Common.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -33,8 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\packages\Common.Logging.2.1.1\lib\net40\Common.Logging.dll</HintPath>
+    <Reference Include="FluentAssertions">
+      <HintPath>..\packages\FluentAssertions.2.0.0.1\lib\net45\FluentAssertions.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,27 +45,24 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="xunit">
+      <HintPath>..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
+    </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="EventHandlerExtensions.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="Guard.cs" />
-    <Compile Include="InvalidStateException.cs" />
-    <Compile Include="IStateMachine.cs" />
-    <Compile Include="IWeakEventHandler.cs" />
-    <Compile Include="Logger.cs" />
-    <Compile Include="MemberName.cs" />
-    <Compile Include="ObjectCopier.cs" />
+    <Compile Include="GuardTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScopeLogger.cs" />
-    <Compile Include="StateChangedEventArgs.cs" />
-    <Compile Include="StateMachine.cs" />
-    <Compile Include="UnregisteredCallback.cs" />
-    <Compile Include="WeakEventHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="DotNetDesign.Common.nuspec" />
+    <ProjectReference Include="..\DotNetDesign.Common\DotNetDesign.Common.csproj">
+      <Project>{db777bb4-c26f-4fa0-9583-fabb7a1c3eb0}</Project>
+      <Name>DotNetDesign.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

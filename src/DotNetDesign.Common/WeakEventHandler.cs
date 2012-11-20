@@ -28,6 +28,9 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(eventHandler, "eventHandler");
+                Guard.ArgumentNotNull(unregister, "unregister");
+
                 _targetRef = new WeakReference(eventHandler.Target);
                 _openHandler =
                     (OpenEventHandler)Delegate.CreateDelegate(typeof(OpenEventHandler), null, eventHandler.Method);
@@ -45,6 +48,8 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(sender, "sender");
+
                 var target = (TTarget)_targetRef.Target;
 
                 if (target != null)
@@ -74,7 +79,10 @@ namespace DotNetDesign.Common
         }
 
         /// <summary>
-        /// Performs an implicit conversion from <see cref="DotNetDesign.Substrate.WeakEventHandler&lt;TTarget,TEventArgs&gt;"/> to <see cref="System.EventHandler&lt;TEventArgs&gt;"/>.
+        /// Performs an implicit conversion from <see>
+        ///                                          <cref>DotNetDesign.Substrate.WeakEventHandler&amp;lt;TTarget,TEventArgs&amp;gt;</cref>
+        ///                                      </see>
+        ///     to <see cref="System.EventHandler&lt;TEventArgs&gt;"/>.
         /// </summary>
         /// <param name="weakEventHandler">The weak event handler.</param>
         /// <returns>
@@ -84,6 +92,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(weakEventHandler, "weakEventHandler");
                 return weakEventHandler._handler;
             }
         }

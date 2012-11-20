@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetDesign.Common", "DotNetDesign.Common\DotNetDesign.Common.csproj", "{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{33EABCF3-345B-49EF-9FEF-FFA6AF8F3732}"
@@ -8,6 +8,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{33EABC
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetDesign.Common.Tests", "DotNetDesign.Common.Tests\DotNetDesign.Common.Tests.csproj", "{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DB777BB4-C26F-4FA0-9583-FABB7A1C3EB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808F4F2F-1CFE-4AC3-B014-D62F9EC31895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

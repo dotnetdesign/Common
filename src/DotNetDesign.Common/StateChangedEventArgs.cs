@@ -34,18 +34,5 @@ namespace DotNetDesign.Common
         /// Gets the new state.
         /// </summary>
         public TState NewState { get; private set; }
-
-        /// <summary>
-        /// Toes the event args.
-        /// </summary>
-        /// <param name="stateChangeEventArgs">The <see cref="DotNetDesign.Substrate.StateChangeEventArgs&lt;TState&gt;"/> instance containing the event data.</param>
-        /// <returns></returns>
-        public static EventArgs ToEventArgs(StateChangeEventArgs<TState> stateChangeEventArgs)
-        {
-            using (Logger.Assembly.Scope())
-            {
-                return stateChangeEventArgs;
-            }
-        }
     }
 }

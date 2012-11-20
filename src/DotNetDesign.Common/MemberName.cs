@@ -20,6 +20,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -34,6 +35,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -47,6 +49,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -63,6 +66,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -78,6 +82,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -92,6 +97,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 return FindMemberName(expression.Body);
             }
         }
@@ -100,6 +106,7 @@ namespace DotNetDesign.Common
         {
             using (Logger.Assembly.Scope())
             {
+                Guard.ArgumentNotNull(expression, "expression");
                 if (expression is MethodCallExpression)
                 {
                     return (expression as MethodCallExpression).Method.Name;
@@ -111,7 +118,7 @@ namespace DotNetDesign.Common
                 }
 
                 var invalidExpression = new ArgumentException("Invalid expression [" + expression + "]");
-                Logger.Assembly.Warn(m => m(invalidExpression.Message), invalidExpression);
+                Logger.Assembly.Error(m => m(invalidExpression.Message), invalidExpression);
 
                 throw invalidExpression;
             }

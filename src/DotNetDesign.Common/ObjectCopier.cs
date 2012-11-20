@@ -26,15 +26,19 @@ namespace DotNetDesign.Common
                 Logger.Assembly.Trace(m => m("Cloning {0}.", source));
                 if (!typeof(T).IsSerializable)
                 {
-                    throw new ArgumentException("The type must be serializable.", "source");
+                    var ex = new ArgumentException("The type must be serializable.", "source");
+                    Logger.Assembly.Error(ex.Message, ex);
+                    throw ex;
                 }
 
                 // Don't serialize a null object, simply return the default for that object
                 if (ReferenceEquals(source, null))
                 {
+                    Logger.Assembly.Trace("Object is null, returning default.");
                     return default(T);
                 }
 
+                Logger.Assembly.Trace("Object is not null. Serializing and returning deserialized clone.");
                 var formatter = new BinaryFormatter();
                 var stream = new MemoryStream();
                 using (stream)
