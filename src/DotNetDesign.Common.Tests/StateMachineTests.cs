@@ -1,16 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
+using FluentAssertions;
 
 namespace DotNetDesign.Common.Tests
 {
-	[TestClass]
 	public class StateMachineTests
 	{
-		private StateMachine<int> _stateMachine;
+		private readonly StateMachine<int> _stateMachine;
 
-		[TestInitialize]
-		public void Setup()
+        public StateMachineTests()
 		{
 			_stateMachine =
 				new StateMachine<int>(new Dictionary<int, IEnumerable<int>>
@@ -22,22 +21,18 @@ namespace DotNetDesign.Common.Tests
                                           });
 		}
 
-		[TestMethod]
-		public void ValidStateMachine_InvalidChange_ShouldThrowException()
-		{
-			TestHelpers.TestException<InvalidStateException<int>>(
-				() => _stateMachine.ChangeState(3),
-				ex =>
-					{
-						Assert.AreEqual(0, ex.CurrentState);
-						Assert.AreEqual(3, ex.TargetState);
-						Assert.AreEqual(1, ex.AllowedStates.Count());
-						Assert.AreEqual(1, ex.AllowedStates.First());
-					}
-				);
-		}
+	    [Fact]
+	    public void ValidStateMachine_InvalidChange_ShouldThrowException()
+	    {
+	        var ex = Assert.Throws<InvalidStateException<int>>(() => _stateMachine.ChangeState(3));
 
-		[TestMethod]
+	        ex.CurrentState.Should().Be(0);
+	        ex.TargetState.Should().Be(3);
+	        ex.AllowedStates.Count().Should().Be(1);
+	        ex.AllowedStates.First().Should().Be(1);
+	    }
+
+	    [Fact]
 		public void ValidStateMachine_ValidChange_ShouldTriggerChangingAndChangedEvents()
 		{
 			var numberOfTimesChangingWasCalled = 0;
@@ -61,15 +56,16 @@ namespace DotNetDesign.Common.Tests
 			};
 
 			_stateMachine.ChangeState(1);
-			Assert.AreEqual(1, _stateMachine.CurrentState);
-			Assert.AreEqual(1, _stateMachine.GetValidNextStates().Count());
-			Assert.AreEqual(2, _stateMachine.GetValidNextStates().First());
-			Assert.AreEqual(1, numberOfTimesChangingWasCalled);
-			Assert.AreEqual(1, numberOfTimesChangedWasCalled);
-			Assert.AreEqual(0, changingOriginalValue);
-			Assert.AreEqual(1, changingNewValue);
-			Assert.AreEqual(0, changedOriginalValue);
-			Assert.AreEqual(1, changedNewValue);
+
+            _stateMachine.CurrentState.Should().Be(1);
+            _stateMachine.GetValidNextStates().Count().Should().Be(1);
+            _stateMachine.GetValidNextStates().First().Should().Be(2);
+            numberOfTimesChangingWasCalled.Should().Be(1);
+            numberOfTimesChangedWasCalled.Should().Be(1);
+            changingOriginalValue.Should().Be(0);
+            changingNewValue.Should().Be(1);
+            changedOriginalValue.Should().Be(0);
+            changedNewValue.Should().Be(1);
 		}
 	}
 }
